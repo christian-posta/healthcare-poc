@@ -150,7 +150,7 @@ You should try to run this test by right clicking the class and select `RunAs-->
 
 ### Running routes stand-alone (outside of fuse)
 
-We can also run these routes outside of a container using the tooling (or the built in mvn camel plugin). Unit tests are the first source of testing and should not be overlooked. We can get 90% of the functionality correct just by using unit tests. But there will be scnarios that will require you to run the adapters and routing engine outside of a unit test to get a better idea of how the integration points interact in a real scenario. Most folks would prefer to just deploy to a JVM container at this point, but with Camel we could do that or we can run stand alone. 
+We can also run these routes outside of a container using the tooling (or the built in mvn camel plugin). Unit tests are the first source of testing and should not be overlooked. We can get 90% of the functionality correct just by using unit tests. But there will be scenarios that will require you to run the adapters and routing engine outside of a unit test to get a better idea of how the integration points interact in a real scenario. Most folks would prefer to just deploy to a JVM container at this point, but with Camel we could do that or we can run stand alone. 
   
 Right click the `camel-context.xml` go to `RunAs-->Local Camel Context (without tests)` 
 
