@@ -61,6 +61,16 @@ Now we should have 3 Fuse JVMs running. We should have the `root` container as w
 
 ![Fabric mq brokers containers](images/fabric-running-brokers.png)
 
+### Configure A-MQ Port
+
+By default, A-MQ will use a randomly chosen port, however the healthcare-poc applications are configured to look for A-MQ on port 61616. In order for the application to work correctly, we need to configure A-MQ to use a statically assigned port. To do this, click on the healthbrokers link outlined in red as shown below:
+
+![Fabric mq configure port 1](images/fabric-mq-port-1.png)
+
+This will bring you to the configuration page shown below. Add the openwire-port property as shown outlined in red below.
+
+![Fabric mq configure port 2](images/fabric-mq-port-2.png)
+
 ### Turning on Virtual Topics
 ActiveMQ has a wonderful feature called [Virtual Topics](http://activemq.apache.org/virtual-destinations.html). This feature allows you to do pub-sub broadcast semantics but back the subscriptions with queues. This has many benefits, but chief among them, allows to loadbalance against a single stream of messages (with durable subscriptions, you cannot do that). This allows publishers to publish to a topic and consumers consume from the stream as though they were consuming from a queue. 
 
@@ -120,6 +130,8 @@ From the root of the cloned project, run this command:
 
     mvn clean install -Pfabric fabric8:deploy
     
+> NOTE: For JBoss Fuse 6.21, the Maven version must be 3.2.4 or less in order for the fabric8:deploy goal to work as it is not compatible with later versions of Maven.
+
 This will generate the profiles and upload them to your locally running fabric. Note, if your maven plugin is not configured correctly this will fail. If you have issues find me `@christianposta` on twitter or log an issue in this repo. 
 
 You should see this if built successfully:
