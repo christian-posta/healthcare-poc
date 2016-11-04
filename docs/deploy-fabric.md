@@ -128,9 +128,11 @@ These properties define the features and parent profiles needed to implement the
 
 From the root of the cloned project, run this command:
 
-    mvn clean install -Pfabric fabric8:deploy
+    mvn clean install -DskipTests -Pfabric fabric8:deploy
     
 > NOTE: For JBoss Fuse 6.21, the Maven version must be 3.2.4 or less in order for the fabric8:deploy goal to work as it is not compatible with later versions of Maven.
+
+> NOTE: We skip running the unit tests here since the unit tests start an A-MQ broker on port 61616. Since we already have the Fabric A-MQ running on that port the unit tests will fail. If you want to run the unit tests, shut down the fabric containers first.
 
 This will generate the profiles and upload them to your locally running fabric. Note, if your maven plugin is not configured correctly this will fail. If you have issues find me `@christianposta` on twitter or log an issue in this repo. 
 
