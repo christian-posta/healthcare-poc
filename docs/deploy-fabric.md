@@ -67,9 +67,11 @@ By default, A-MQ will use a randomly chosen port, however the healthcare-poc app
 
 ![Fabric mq configure port 1](images/fabric-mq-port-1.png)
 
-This will bring you to the configuration page shown below. Add the openwire-port property as shown outlined in red below.
+This will bring you to the configuration page shown below. Click the Edit button in the upper right and then add the openwire-port property as shown outlined in red below.
 
 ![Fabric mq configure port 2](images/fabric-mq-port-2.png)
+
+After making this change, go into each of the healthbroker containers and stop and start it in order for the change to take effect.
 
 ### Turning on Virtual Topics
 ActiveMQ has a wonderful feature called [Virtual Topics](http://activemq.apache.org/virtual-destinations.html). This feature allows you to do pub-sub broadcast semantics but back the subscriptions with queues. This has many benefits, but chief among them, allows to loadbalance against a single stream of messages (with durable subscriptions, you cannot do that). This allows publishers to publish to a topic and consumers consume from the stream as though they were consuming from a queue. 
