@@ -18,8 +18,15 @@ Fabric is a microservices deployment/management platform for JBoss Fuse. It give
 Before we let Fuse Fabric manage our deployments, let's first create a Fabric container. If you don't have fuse running yet, navigate to the root directory and run:
 
     ./bin/fuse
+
+You will notice that shell prompts you to create a user with the message:
+
+```No user found in etc/users.properties. Please use the 'esb:create-admin-user' command to create one.```
+
+Run the ```esb:create-admin-user``` command and create the user ```admin``` with password ```admin```.
+
     
-At the shell that Fuse starts up, run this command:
+After this we will create the fabric, to this by running this command:
 
     JBossFuse:karaf@root> fabric:create --clean --wait-for-provisioning --profile fabric
     
@@ -36,6 +43,15 @@ Click on the `Wiki` tab which will show you a list of `profiles` or "application
 
 Feel free to poke around and see what default applications/profiles exist out of the box.
 
+### Configure A-MQ Port
+
+By default, A-MQ will use a randomly chosen port, however the healthcare-poc applications are configured to look for A-MQ on port 61616. In order for the application to work correctly, we need to configure A-MQ to use a statically assigned port. To do this, click on the healthbrokers link outlined in red as shown below:
+
+![Fabric mq configure port 1](images/fabric-mq-port-1.png)
+
+This will bring you to the configuration page shown below. Click the Edit button in the upper right and then add the openwire-port property as shown outlined in red below.
+
+![Fabric mq configure port 2](images/fabric-mq-port-2.png)
 
 ## Deploying ActiveMQ
 
@@ -118,8 +134,12 @@ These properties define the features and parent profiles needed to implement the
 
 From the root of the cloned project, run this command:
 
-    mvn clean install -Pfabric fabric8:deploy
+    mvn clean install -DskipTests -Pfabric fabric8:deploy
     
+> NOTE: For JBoss Fuse 6.21, the Maven version must be 3.2.4 or less in order for the fabric8:deploy goal to work as it is not compatible with later versions of Maven.
+
+> NOTE: We skip running the unit tests here since the unit tests start an A-MQ broker on port 61616. Since we already have the Fabric A-MQ running on that port the unit tests will fail. If you want to run the unit tests, shut down the fabric containers first.
+
 This will generate the profiles and upload them to your locally running fabric. Note, if your maven plugin is not configured correctly this will fail. If you have issues find me `@christianposta` on twitter or log an issue in this repo. 
 
 You should see this if built successfully:
