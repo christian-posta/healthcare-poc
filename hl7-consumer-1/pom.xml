@@ -109,7 +109,7 @@
     <profile>
       <id>fabric</id>
       <properties>
-        <environment.activemq.uri>amq:queue:org.jboss.fuse.hl7.consumer1?transacted=true&amp;acknowledgementModeName=SESSION_TRANSACTED</environment.activemq.uri>
+        <environment.activemq.uri>activemq:queue:org.jboss.fuse.hl7.consumer1</environment.activemq.uri>
         <fabric8.features>camel-spring camel-hl7 camel-netty4 mq-fabric-camel</fabric8.features>
       </properties>
     </profile>

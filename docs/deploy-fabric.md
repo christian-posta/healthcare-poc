@@ -43,18 +43,7 @@ Click on the `Wiki` tab which will show you a list of `profiles` or "application
 
 Feel free to poke around and see what default applications/profiles exist out of the box.
 
-### Configure A-MQ Port
-
-By default, A-MQ will use a randomly chosen port, however the healthcare-poc applications are configured to look for A-MQ on port 61616. In order for the application to work correctly, we need to configure A-MQ to use a statically assigned port. To do this, click on the healthbrokers link outlined in red as shown below:
-
-![Fabric mq configure port 1](images/fabric-mq-port-1.png)
-
-This will bring you to the configuration page shown below. Click the Edit button in the upper right and then add the openwire-port property as shown outlined in red below.
-
-![Fabric mq configure port 2](images/fabric-mq-port-2.png)
-
 ## Deploying ActiveMQ
-
 You should see a screen similar to this:
 
 ![Fabric welcome](images/fabric-mq-services.png)
@@ -65,7 +54,19 @@ So click on the `Broker` button to configure a new set of ActiveMQ profiles:
 
 ![Fabric welcome](images/fabric-mq-config.png)
 
-Click the Create button and you should see the new broker profiles in the UI. Another thing to note is that the new broker profiles we created have a few red icons indicating that the profiles are not in a valid state. Hover over the red icons and you'll see why:
+Click the Create button and you should see the new broker profiles in the UI. 
+
+### Configure A-MQ Port
+By default, A-MQ will use a randomly chosen port, however the healthcare-poc applications are configured to look for A-MQ on port 61616. In order for the application to work correctly, we need to configure A-MQ to use a statically assigned port. To do this, click on the healthbrokers link outlined in red as shown below:
+
+![Fabric mq configure port 1](images/fabric-mq-port-1.png)
+
+This will bring you to the configuration page shown below. Click the Edit button in the upper right and then add the openwire-port property as shown outlined in red below.
+
+![Fabric mq configure port 2](images/fabric-mq-port-2.png)
+
+### Create A-MQ Containers
+One other thing to note is that the new broker profiles we created have a few red icons indicating that the profiles are not in a valid state. Hover over the red icons and you'll see why:
 
 ![Fabric welcome](images/fabric-invalid-mq.png)
 
